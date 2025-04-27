@@ -18,4 +18,7 @@ public:
     // Set drive torque on a specific wheel
     UFUNCTION(BlueprintCallable, Category = "Custom Vehicle Control")
     void SetDriveTorquePerWheel(int32 WheelIndex, float TorqueAmount);
+
+    UFUNCTION(BlueprintCallable, Category = "Custom Vehicle Control")
+    void SetSteerAnglePerWheel(int32 WheelIndex, float SteerAngle);
 };

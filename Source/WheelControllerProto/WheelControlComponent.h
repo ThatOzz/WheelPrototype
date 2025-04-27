@@ -28,7 +28,20 @@ public:
     float RightInput;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wheel Input")
-    float MaxTorque = 5000.f;
+    float MaxTorque = 2000.f;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wheel Input")
+    float MaxSpeed = 80; //KM/H
+
+    //Steering inputs
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wheel Input")
+    float LeftSteerInput;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wheel Input")
+    float RightSteerInput;
+
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Wheel Input")
+    float MaxSteerAngle = 45.f;
 
 private:
     UCustomVehicleMovementController* MovementComponent;

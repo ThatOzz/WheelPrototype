@@ -24,8 +24,19 @@ void UWheelControlComponent::TickComponent(float DeltaTime, ELevelTick TickType,
 
     if (!MovementComponent) return;
 
-    MovementComponent->SetDriveTorquePerWheel(1, LeftInput * MaxTorque);  // Front Left
-    MovementComponent->SetDriveTorquePerWheel(3, LeftInput * MaxTorque);  // Rear Left
-    MovementComponent->SetDriveTorquePerWheel(0, RightInput * MaxTorque); // Front Right
-    MovementComponent->SetDriveTorquePerWheel(2, RightInput * MaxTorque); // Rear Right
+    UE_LOG(LogTemp, Log, TEXT("CurrentSpeed: %f"), (MovementComponent->GetForwardSpeed() * 0.036f));
+    if ((MovementComponent->GetForwardSpeed() * 0.036f) < MaxSpeed)
+    {
+        MovementComponent->SetDriveTorquePerWheel(1, LeftInput * MaxTorque);  // Front Left
+        MovementComponent->SetDriveTorquePerWheel(3, LeftInput * MaxTorque);  // Rear Left
+        MovementComponent->SetDriveTorquePerWheel(0, RightInput * MaxTorque); // Front Right
+        MovementComponent->SetDriveTorquePerWheel(2, RightInput * MaxTorque); // Rear Right
+    }
+    else
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            MovementComponent->SetDriveTorquePerWheel(i, 0);
+        }
+    }
 }
