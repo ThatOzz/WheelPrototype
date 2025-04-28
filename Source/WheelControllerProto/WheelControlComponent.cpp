@@ -13,10 +13,7 @@ void UWheelControlComponent::BeginPlay()
     Super::BeginPlay();
 
     MovementComponent = GetOwner()->FindComponentByClass<UCustomVehicleMovementController>();
-    if (!MovementComponent)
-    {
-        UE_LOG(LogTemp, Error, TEXT("WheelControlComponent: Could not find UCustomVehicleMovementController!"));
-    }
+    
 }
 
 void UWheelControlComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
